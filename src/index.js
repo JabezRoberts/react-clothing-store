@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import { UserProvider } from './contexts/user-context';
+import { ProductsProvider } from './contexts/products-context';
+import { CartProvider } from './contexts/cart-context';
 
 import './index.scss';
 
@@ -16,7 +18,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-          <App />
+        <ProductsProvider> {/* products need to access user - products can rwach up into user provider*/}
+          <CartProvider> {/* cart provider needs to be accessed by user and product */}
+            <App />
+          </CartProvider>
+        </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
