@@ -34,7 +34,7 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
     }
 
 
-    //return back cart items with reduced quantity
+    //return the cart items with reduced quantity
     return cartItems.map((cartItem) => 
         cartItem.id === cartItemToRemove.id
         ? {...cartItem, quantity: cartItem.quantity - 1}
@@ -97,7 +97,8 @@ export const CartProvider = ({ children }) => {
         cartCount,
         removeCartItem,
         clearItemFromCart,
-        cartTotal 
+        cartTotal,
+        removeItemFromCart
     };
 
     return <CartContext.Provider value={value}>{ children }</CartContext.Provider>
